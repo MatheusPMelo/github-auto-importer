@@ -1,12 +1,11 @@
 [
     {
-        "id": 1,
-        "repo_gitlab": "http://162.241.48.180:81/dev/melnick-the-garden-lp.git",
-        "repo_github": "git@github.com:MatheusPMelo/teste_import.git"
+        "repo_gitlab": "",
+        "repo_github": ""
     },
     {
         "id": 2,
-        "repo_gitlab":"http://162.241.48.180:81/dev/po000739-flz.git",
-        "repo_github":"git@github.com:MatheusPMelo/teste_import2.git"
+        "repo_gitlab":"",
+        "repo_github":""
     }
 ]   

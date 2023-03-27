@@ -1,10 +1,6 @@
 [
     {
-        "repo_gitlab": "",
-        "repo_github": ""
-    },
-    {
-        "repo_gitlab":"",
-        "repo_github":""
+        "name": "with-aluno-laravel",
+        "repository": "http://162.241.48.180:81/dev/PO-000739-with-aluno-laravel.git"
     }
 ]   

@@ -1,28 +1,15 @@
 import json
-import os
-
+from utils import *
+import subprocess
 
 with open("./repos.json") as r:
-     repos = json.load(r)
+     repositories = json.load(r)
 
-key = 0
+if isInstalled('gh') and isInstalled('git'):
 
-# Clona os repositórios em suas devidas pastas
-for i in repos:
-
-    print(i['repo_github'])
-
-    # cria pasta para ser clonado
-    os.system("mkdir ./repos/projeto{key}".format(key=key))
-    
-    # Fala onde é pra ser clonado
-    containerRepos = './repos/projeto{key}/.'.format(key=key)
-
-     # Clona o projeto
-    os.system('git clone {gitlab} {repos}'.format(gitlab=i['repo_gitlab'], repos=containerRepos))
-
-    # entra no diretório do projeto remove o gitlab e adiciona o git hub
-    os.system('cd ./repos/projeto{key} && git remote rm origin && git remote add origin {repoGithub} && git push origin main'.format(key=key, repoGithub=i['repo_github']))
-
-    # Incrementa 1
-    key = key + 1
+     for repository in repositories:
+        output = subprocess.check_output(["gh", "repo", "create",f"{repository['name']}", "--private"])
+        url_repo_decode = output.decode("utf-8")
+        system(f"git clone {repository['repository']} ./repos/{repository['name']}/")
+        system(f"cd ./repos/{repository['name']} && git remote rm origin && git remote add origin {url_repo_decode}")
+        system(f"cd ./repos/{repository['name']} && git branch -M main && git push -u origin main")
